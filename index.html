@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Tables</title>
+</head>
+<body>
+
+    <h2>Table 1</h2>
+    <table border="1" id="table1">
+        <thead>
+            <tr>
+                <th>Index #</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+           
+        </tbody>
+    </table>
+
+    <h2>Table 2</h2>
+    <table border="1">
+        <tr>
+            <th>Category</th>
+            <th>Value</th>
+        </tr>
+        <tr><td>Alpha</td><td id="alpha"></td></tr>
+        <tr><td>Beta</td><td id="beta"></td></tr>
+        <tr><td>Charlie</td><td id="charlie"></td></tr>
+    </table>
+
+    <script>
+       
+        const table1Data = [
+            { index: 'A1', value: 41 },
+            { index: 'A2', value: 18 },
+            { index: 'A3', value: 21 },
+            { index: 'A4', value: 63 },
+            { index: 'A5', value: 2 },
+            { index: 'A6', value: 53 },
+            { index: 'A7', value: 5 },
+            { index: 'A8', value: 57 },
+            { index: 'A9', value: 60 },
+            { index: 'A10', value: 93 },
+            { index: 'A11', value: 28 },
+            { index: 'A12', value: 3 },
+            { index: 'A13', value: 90 },
+            { index: 'A14', value: 39 },
+            { index: 'A15', value: 80 },
+            { index: 'A16', value: 88 },
+            { index: 'A17', value: 49 },
+            { index: 'A18', value: 60 },
+            { index: 'A19', value: 26 },
+            { index: 'A20', value: 28 }
+        ];
+
+        
+        const tbody = document.querySelector("#table1 tbody");
+        table1Data.forEach(item => {
+            const row = document.createElement("tr");
+            row.innerHTML = `<td>${item.index}</td><td>${item.value}</td>`;
+            tbody.appendChild(row);
+        });
+
+        
+        const getValue = index => table1Data.find(item => item.index === index).value;
+
+        
+        const alpha = getValue('A5') + getValue('A20');     // 2 + 28 = 30
+        const beta = getValue('A15') / getValue('A7');      // 80 / 5 = 16
+        const charlie = getValue('A13') * getValue('A12');  // 90 * 3 = 270
+
+
+        document.getElementById("alpha").innerText = alpha;
+        document.getElementById("beta").innerText = beta;
+        document.getElementById("charlie").innerText = charlie;
+    </script>
+
+</body>
+</html>
